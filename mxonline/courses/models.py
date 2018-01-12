@@ -4,7 +4,7 @@ from datetime import datetime
 
 from django.db import models
 
-from organization.models import CourseOrg
+from organizations.models import CourseOrg
 
 
 class Course(models.Model):

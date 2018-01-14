@@ -33,9 +33,9 @@ class CourseComment(models.Model):
 
 class UserFaverite(models.Model):
     user = models.ForeignKey(UserProfile, verbose_name=u"用户")
-    fav_id = models.CharField(default=0, verbose_name=u"用户id")
+    fav_id = models.CharField(default=0, verbose_name=u"用户id", max_length=10)
     fav_type = models.CharField(default=1, choices=((1, "课程"), (2, "课程机构"), (3, "讲师")),\
-                                verbose_name=u"收藏类型")
+                                verbose_name=u"收藏类型", max_length=2)
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"添加时间")
 
     class Meta:

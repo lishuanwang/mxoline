@@ -50,11 +50,18 @@ INSTALLED_APPS = [
     'operation',
     'organizations',
     'xadmin',
-    'crispy_forms'
+    'crispy_forms',
+    'captcha'
 ]
-# 重载auth_usre模块，能够让users中model继承abstractuser类
-
+# 重载auth_user模块，能够让users中model继承abstractuser类
 AUTH_USER_MODEL = "users.UserProfile"
+
+# login 重写authenticate方法，能够实现邮箱登录
+# Application definition
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,6 +74,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'mxonline.urls'
+
+
 
 TEMPLATES = [
     {
@@ -101,6 +110,13 @@ DATABASES = {
     }
 }
 
+# email global setting
+EMAIL_HOST = 'smtp.sina.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'lishuanwang@sina.com'
+EMAIL_HOST_PASSWORD = 'ixiaolu1229'
+EMAIL_USE_TLS = False
+EMAIL_FROM = 'lishuanwang@sina.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

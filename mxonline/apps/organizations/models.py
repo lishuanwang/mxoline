@@ -14,6 +14,9 @@ class CityDict(models.Model):
         verbose_name = u"城市列表"
         verbose_name_plural = verbose_name
 
+    def __unicode__(self):
+        return self.name
+
 
 class CourseOrg(models.Model):
     city = models.ForeignKey(CityDict, verbose_name=u"所属城市")
@@ -32,6 +35,9 @@ class CourseOrg(models.Model):
         verbose_name = u"课程机构表"
         verbose_name_plural = verbose_name
 
+    def __unicode__(self):
+        return self.name
+
 
 class Teacher(models.Model):
     org = models.ForeignKey(CourseOrg, verbose_name=u"所属机构")
@@ -49,5 +55,9 @@ class Teacher(models.Model):
     class Meta:
         verbose_name = u"教师表"
         verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return self.name
+
 
 

@@ -22,6 +22,8 @@ class CourseOrg(models.Model):
     city = models.ForeignKey(CityDict, verbose_name=u"所属城市")
     name = models.CharField(max_length=20, verbose_name=u"机构名称")
     desc = models.TextField(verbose_name=u"机构描述")
+    type = models.CharField(verbose_name=u'机构类型', max_length=10, default='pxjg', choices=(('pxjg',u'培训机构'),('gx', u'高校'),\
+                                                                          ('gr', u'个人')))
     image = models.ImageField(verbose_name=u"缩略图", upload_to="courseorg/%Y%m",\
                               default="courseorg/default.png", max_length=100)
     students = models.IntegerField(verbose_name=u"学生数量", default=0)

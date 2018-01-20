@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """mxonline URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,10 +19,11 @@ import xadmin
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.views.static import serve
 
 from users.views import LoginView, RegisterView, AciveUserView, ForgetPwdView, ResetView, ModifyPwdView
 from organizations.views import OrgListView
-
+from .settings import MEDIA_ROOT
 
 
 urlpatterns = [
@@ -35,6 +37,9 @@ urlpatterns = [
     url(r'^forget/$', ForgetPwdView.as_view(), name='forget_pwd'),
     url(r'^reset/(?P<active_code>.*)/$', ResetView.as_view(), name='reset_pwd'),
     url(r'^modify/$', ModifyPwdView.as_view(), name='modify_pwd'),
-    url(r'^org_list/$', OrgListView.as_view(), name='org_list')
+    # 配置organizations的urls
+    url(r'^org/', include('organizations.urls', namespace='org')),
+    # 配置静态文件返回方法
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 
 ]

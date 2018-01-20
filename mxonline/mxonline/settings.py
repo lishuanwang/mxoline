@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'organizations',
     'xadmin',
     'crispy_forms',
-    'captcha'
+    'captcha',
+    'pure_pagination'
 ]
 # 重载auth_user模块，能够让users中model继承abstractuser类
 AUTH_USER_MODEL = "users.UserProfile"
@@ -88,6 +89,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.media'
             ],
         },
     },
@@ -158,3 +160,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

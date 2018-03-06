@@ -116,7 +116,7 @@ DATABASES = {
 EMAIL_HOST = 'smtp.sina.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'lishuanwang@sina.com'
-EMAIL_HOST_PASSWORD = 'ixiaolu1120'
+EMAIL_HOST_PASSWORD = 'password'
 EMAIL_USE_TLS = False
 EMAIL_FROM = 'lishuanwang@sina.com'
 
